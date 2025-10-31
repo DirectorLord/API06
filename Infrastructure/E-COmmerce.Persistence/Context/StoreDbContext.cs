@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace E_COmmerce.Persistence.Context;
 
-internal class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+internal class StoreDbContext(DbContextOptions<StoreDbContext> options)
     : DbContext(options)
 {
     public DbSet<Product> Products { get; set; }

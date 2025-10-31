@@ -2,7 +2,7 @@
 
 namespace E_Commerce.Persistence.Repositories;
 
-internal class UnitOfWork(ApplicationDbContext context)
+internal class UnitOfWork(StoreDbContext context)
     : IUnitOfWork
 {
     private readonly Dictionary<string, object> _repositories = [];

@@ -2,7 +2,7 @@
 
 namespace E_Commerce.Persistence.DBInitializers;
 
-internal class DBInitializer(ApplicationDbContext dbContext) : IDInitializer
+internal class DBInitializer(StoreDbContext dbContext) : IDInitializer
 {
     public async Task InitializeAsync()
     {

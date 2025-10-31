@@ -15,9 +15,9 @@ public class BasketService(IBasketRepository basketRepository, IMapper mapper) :
     public Task DeletedAsync(string id)
     => basketRepository.DeleteAsync(id);
 
-    public Task<CustomerBasketDTO> GetByIdAsync(string id)
+    public async Task<CustomerBasketDTO> GetByIdAsync(string id)
     {
-        var basket = basketRepository.GetAsync(id);
+        var basket = await basketRepository.GetAsync(id);
         return mapper.Map<CustomerBasketDTO>(basket);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace E_Commerce.Persistence.Repositories;
 
-internal class Repository<TEntity, TKey>(ApplicationDbContext context)
+internal class Repository<TEntity, TKey>(StoreDbContext context)
     : IRepository<TEntity, TKey>
      where TEntity : Entity<TKey>
 {
