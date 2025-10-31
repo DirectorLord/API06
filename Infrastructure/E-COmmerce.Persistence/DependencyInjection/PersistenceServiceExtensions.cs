@@ -7,6 +7,8 @@ using StackExchange.Redis;
 using E_Commerce.Service.Abstraction;
 using E_Commerce.Persistence.Services;
 using E_Commerce.Persistence.AuthContext;
+using E_Commerce.Domain.Entities.Auth;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace E_Commerce.Persistence.DependencyInjection;
@@ -34,6 +36,18 @@ public static class PersistenceServiceExtensions
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IDInitializer, DBInitializer>();
+        ConfigureIdentity(services, configuration);
         return services;
+    }
+    private static void ConfigureIdentity(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddIdentityCore<ApplicationUser>(c =>
+        {
+            c.Password.RequireDigit = false;
+            c.Password.RequireLowercase = false;
+            c.Password.RequireUppercase = false;
+            c.Password.RequireNonAlphanumeric = false;
+            c.Password.RequiredLength = 4;
+        }).AddRoles<IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
     }
 }

@@ -54,6 +54,8 @@ namespace ECommerce.Web
             var scope = app.Services.CreateScope();
             var initializer = scope.ServiceProvider.GetRequiredService<IDInitializer>();
             await initializer.InitializeAsync();
+            await initializer.InitializeAuthDbAsync();
+
 
             app.UseExceptionHandler();
 

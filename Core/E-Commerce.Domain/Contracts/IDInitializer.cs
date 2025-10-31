@@ -3,4 +3,5 @@
 public interface IDInitializer
 {
     Task InitializeAsync();
+    Task InitializeAuthDbAsync();
 }
