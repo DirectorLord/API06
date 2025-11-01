@@ -1,10 +1,9 @@
 using E_Commerce.Domain.Contracts;
 using E_Commerce.Persistence.DependencyInjection;
 using E_Commerce.Service.DependencyInjections;
-using E_Commerce.Service.Exceptions;
 using ECommerce.Web.Handlers;
-using ECommerce.Web.Middlewares;
 using Microsoft.AspNetCore.Mvc;
+using E_Commerce.Infrastructure.Service;
 namespace ECommerce.Web
 {
     public class Program
@@ -18,6 +17,7 @@ namespace ECommerce.Web
             builder.Services.AddControllers();
 
             builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddApplicationServices().AddPersistenceServices(builder.Configuration).AddInfrastructureServices();
 
             builder.Services.AddApplicationServices();
             builder.Services.AddEndpointsApiExplorer();
