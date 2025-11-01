@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Service.Abstraction;
 using E_Commerce.Shared.DataTransferObjects;
 using E_Commerce.Shared.DataTransferObjects.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ public  class ProductsController (IProductService service)
     #endregion
 
     #region GetById
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<IEnumerable<ProductResponse>>> Get(int id, CancellationToken cancellationToken = default)
     {
