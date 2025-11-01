@@ -6,7 +6,7 @@ namespace E_Commerce.Infrastructure.Service;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<ITokenService, TokenService>();
         return services;

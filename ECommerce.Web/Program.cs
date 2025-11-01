@@ -17,8 +17,8 @@ namespace ECommerce.Web
             builder.Services.AddControllers();
 
             builder.Services.AddPersistenceServices(builder.Configuration);
-            builder.Services.AddApplicationServices().AddPersistenceServices(builder.Configuration).AddInfrastructureServices();
-
+            builder.Services.AddApplicationServices().AddPersistenceServices(builder.Configuration).AddInfrastructureServices(builder.Configuration);
+            builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection(JWTOptions.SectionName));
             builder.Services.AddApplicationServices();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
